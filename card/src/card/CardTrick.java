@@ -22,7 +22,12 @@ public class CardTrick {
     {
         Card[] magicHand = new Card[7];
         Random rand = new Random();
-        
+
+        // Hard-coded luckyCard
+        Card luckyCard = new Card();
+        luckyCard.setValue(7); // Choosing 7 as the lucky number
+        luckyCard.setSuit(Card.SUITS[2]); // Choosing Spades as the lucky suit
+
         // Fill the magicHand array with random cards
         for (int i=0; i<magicHand.length; i++)
         {
@@ -43,20 +48,28 @@ public class CardTrick {
         userCard.setValue(value);
         userCard.setSuit(suit);
 
-        // Search for the user's card in the magicHand array
-        boolean found = false;
+        // Search for the user's card and the luckyCard in the magicHand array
+        boolean userCardFound = false;
+        boolean luckyCardFound = false;
         for (Card card : magicHand) {
             if (card.getValue() == userCard.getValue() && card.getSuit().equals(userCard.getSuit())) {
-                found = true;
-                break;
+                userCardFound = true;
+            }
+            if (card.getValue() == luckyCard.getValue() && card.getSuit().equals(luckyCard.getSuit())) {
+                luckyCardFound = true;
             }
         }
 
         // Report the result
-        if (found) {
+        if (userCardFound) {
             System.out.println("Your card was found in the magic hand!");
         } else {
             System.out.println("Your card was not found in the magic hand.");
+        }
+        if (luckyCardFound) {
+            System.out.println("The lucky card was found in the magic hand!");
+        } else {
+            System.out.println("The lucky card was not found in the magic hand.");
         }
     } 
 }
