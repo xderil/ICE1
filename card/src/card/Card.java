@@ -12,7 +12,7 @@ package card;
  * This code is to be used in ICE1. When you create your own branch,
  * add your name as a modifier.
  * @author srinivsi 
- * edited by deril 
+ * edited by deril B
  */
 public class Card {
 
